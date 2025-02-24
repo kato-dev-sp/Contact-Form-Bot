@@ -46,8 +46,11 @@ def submit_form():
             driver.get(contact_url)
             time.sleep(5)
 
+            screenshot_filename = f"{url.replace('https://', '').replace('/', '_')}.png"
+            screenshot_path = os.path.join("static/screenshots", screenshot_filename)
+
             # フォームに入力
-            form_success = fill_contact_form(driver, form_data, contact_url)
+            form_success = fill_contact_form(driver, form_data, screenshot_path)
             if not form_success:
                 results.append({
                     "status": "error",
@@ -58,7 +61,7 @@ def submit_form():
                 continue  # 次の URL に進む
 
             # スクリーンショット撮影
-            screenshot_filename = f"{url.replace('https://', '').replace('/', '_')}.png"
+            # screenshot_filename = f"{url.replace('https://', '').replace('/', '_')}.png"
             # screenshot_path = os.path.join("static/screenshots", screenshot_filename)
             # capture_full_page_screenshot(driver, screenshot_path)
 

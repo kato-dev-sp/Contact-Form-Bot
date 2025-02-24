@@ -49,7 +49,7 @@ def preprocess_form_data(form_data):
     logging.info(f"🛠 変換後の入力データ: {combined_data}")
     return combined_data
 
-def fill_contact_form(driver, form_data, contact_url):
+def fill_contact_form(driver, form_data, screenshot_path):
     """問い合わせフォームにデータを入力し、送信する"""
     try:
         success = False
@@ -121,8 +121,6 @@ def fill_contact_form(driver, form_data, contact_url):
         # logging.info(f"📸 スクリーンショットを保存しました: {screenshot_path}")
 
         # スクリーンショット撮影
-            screenshot_filename = f"{contact_url.replace('https://', '').replace('/', '_')}.png"
-            screenshot_path = os.path.join("static/screenshots", screenshot_filename)
             capture_full_page_screenshot(driver, screenshot_path)
             logging.info(f"📸 スクリーンショットを保存しました: {screenshot_path}")
 
